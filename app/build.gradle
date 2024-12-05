@@ -16,7 +16,6 @@ android {
     multiDexEnabled true
     vectorDrawables.useSupportLibrary = true
 
-    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
 
   signingConfigs {
@@ -92,8 +91,8 @@ dependencies {
 //  debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
 //  debugImplementation 'com.amitshekhar.android:debug-db:1.0.4'
 
-  implementation project(':debug-db')
-  implementation project(':debug-db-base')
+//  implementation project(':debug-db')
+//  implementation project(':debug-db-base')
 }
 repositories {
   mavenCentral()

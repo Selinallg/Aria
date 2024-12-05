@@ -2,7 +2,7 @@ include ':app', ':Aria', ':AriaAnnotations', ':AriaCompiler', ':AppFrame', ':Htt
     ':FtpComponent', ':PublicComponent'
 
 
-include ':debug-db'
-include ':debug-db-base'
-project(':debug-db').projectDir = (new File(settingsDir,"../Android-Debug-Database/debug-db"))
-project(':debug-db-base').projectDir = (new File(settingsDir,"../Android-Debug-Database/debug-db-base"))
+//include ':debug-db'
+//include ':debug-db-base'
+//project(':debug-db').projectDir = (new File(settingsDir,"../Android-Debug-Database/debug-db"))
+//project(':debug-db-base').projectDir = (new File(settingsDir,"../Android-Debug-Database/debug-db-base"))
