@@ -346,3 +346,15 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+
+Aria
+Copyright 2016 AriaLyy(https://github.com/AriaLyy/Aria)
+
+This project includes software from the commons-net project (Apache 2.0)
+https://github.com/apache/commons-net
+
+
+This project includes software from the jsch project (BSD 2.0)
+* Copyright (c) 2002-2015 Atsuhiko Yamanaka, JCraft,Inc.
+  https://github.com/is/jsch

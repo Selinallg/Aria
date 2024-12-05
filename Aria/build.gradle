@@ -25,15 +25,8 @@ android {
 }
 dependencies {
   implementation fileTree(include: ['*.jar'], dir: 'libs')
-  testImplementation 'junit:junit:4.12'
 //  implementation "androidx.appcompat:appcompat:${rootProject.ext.XAppcompatVersion}"
   api project(path: ':AriaAnnotations')
   api project(path: ':PublicComponent')
   api project(path: ':HttpComponent')
 }
-
-//apply from: 'bintray-release.gradle'
-ext{
-  PUBLISH_ARTIFACT_ID = 'core'
-}
-apply from: '../gradle/mavenCentral-release.gradle'
