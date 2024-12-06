@@ -38,7 +38,8 @@ import java.util.List;
 
 public abstract class PermissionActivity extends AppCompatActivity {
     private static String TAG = "_PermissionActivity";
-    protected String[] permissions = new String[]{Manifest.permission.CAMERA};
+    protected String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    //protected String[] permissions = new String[]{Manifest.permission.CAMERA};
     List<String> mPermissionList = new ArrayList<>();
     protected final int mRequestCameraCode = 100;
     protected final int mRequestStorageCode = 11024;
