@@ -6,3 +6,8 @@ https://qaz64.github.io/aria_doc/api/task_list.html
 
 
 https://qaz64.github.io/aria_doc/api/task_handle.html
+
+
+
+m3u8
+https://blog.csdn.net/weixin_44710155/article/details/127500112
