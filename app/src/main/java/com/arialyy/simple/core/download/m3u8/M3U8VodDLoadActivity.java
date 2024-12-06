@@ -332,12 +332,15 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
         //.merge(true)
         //.setVodTsUrlConvert(new VodTsUrlConverter());
         //.setMergeHandler(new TsMergeHandler());
-        option.setUseDefConvert(false);
-        option.generateIndexFile();
-        //option.setKeyUrlConverter(new KeyUrlConverter());
-        option.setVodTsUrlConvert(new VodTsUrlConverter());
-        option.setBandWidthUrlConverter(new BandWidthUrlConverter());
         //option.setUseDefConvert(true);
+        option.setUseDefConvert(false);
+        //option.setKeyUrlConverter(new KeyUrlConverter());
+//        option.setBandWidthUrlConverter(new BandWidthUrlConverter());
+        option.setVodTsUrlConvert(new VodTsUrlConverter());
+        //
+//        option.generateIndexFile();
+        // 合并成 可播放文件
+        option.merge(true);
         return option;
     }
 
@@ -460,8 +463,8 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
 
         @Override
         public String convert(String m3u8Url, String bandWidthUrl) {
-            Log.d(TAG, "convert: m3u8Url=" + m3u8Url);
-            Log.d(TAG, "convert: bandWidthUrl=" + bandWidthUrl);
+            Log.d(TAG, "BandWidthUrlConverter convert: m3u8Url=" + m3u8Url);
+            Log.d(TAG, "BandWidthUrlConverter convert: bandWidthUrl=" + bandWidthUrl);
             int index = m3u8Url.lastIndexOf("/");
 
             //m3u8Url:第一个m3u8，连接到下一个m3u8
@@ -473,7 +476,7 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
              * 如果没有则是用域名+第二个文件路径，如：(域名)http://xxxx.xxx.com/20210927/3oCoCiM4/hls/index.m3u8(路径)
              */
             if (bandWidthUrl.contains("http://") || bandWidthUrl.contains("https://")) {
-                Log.d(TAG, "convert: ---->" + bandWidthUrl);
+                Log.d(TAG, "BandWidthUrlConverter convert: ---->" + bandWidthUrl);
                 //return bandWidthUrl;
             } else {
                 //获取域名
@@ -481,10 +484,10 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
                     URL url = new URL(m3u8Url);
                     String host = url.getProtocol() + "://" + url.getHost() + ":" + url.getDefaultPort();
                     //return host+"/"+bandWidthUrl;
-                    Log.d(TAG, "convert: ====>" + host + "/" + bandWidthUrl);
+                    Log.d(TAG, "BandWidthUrlConverter convert: ====>" + host + "/" + bandWidthUrl);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
-                    Log.e(TAG, "convert: xxxxxxxxxx" + e.getMessage());
+                    Log.e(TAG, "BandWidthUrlConverter convert: xxxxxxxxxx" + e.getMessage());
                 }
             }
 

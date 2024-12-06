@@ -49,7 +49,7 @@ public class M3U8VodModule extends BaseViewModule {
   private final String filePath =
       Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath()
           //+ "/道士下山.ts";
-          + "/bb1.ts";
+          + "/bb1.ts.mp4";
 
   private MutableLiveData<DownloadEntity> liveData = new MutableLiveData<>();
   private DownloadEntity singDownloadInfo;
