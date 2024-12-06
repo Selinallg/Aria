@@ -16,4 +16,3 @@ dependencies {
 ext{
   PUBLISH_ARTIFACT_ID = 'annotations'
 }
-apply from: '../gradle/mavenCentral-release.gradle'

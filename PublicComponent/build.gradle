@@ -34,9 +34,3 @@ dependencies {
   implementation fileTree(dir: 'libs', include: ['*.jar'])
   testImplementation 'junit:junit:4.12'
 }
-
-//apply from: 'bintray-release.gradle'
-ext{
-  PUBLISH_ARTIFACT_ID = 'public'
-}
-apply from: '../gradle/mavenCentral-release.gradle'

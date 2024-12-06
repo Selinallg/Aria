@@ -36,9 +36,3 @@ dependencies {
   api "com.jcraft:jzlib:1.1.3"
   implementation project(path: ':PublicComponent')
 }
-
-//apply from: 'bintray-release.gradle'
-ext{
-  PUBLISH_ARTIFACT_ID = 'sftp'
-}
-apply from: '../gradle/mavenCentral-release.gradle'

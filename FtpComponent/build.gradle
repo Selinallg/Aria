@@ -34,9 +34,3 @@ dependencies {
 
   implementation project(path: ':PublicComponent')
 }
-
-//apply from: 'bintray-release.gradle'
-ext{
-  PUBLISH_ARTIFACT_ID = 'ftp'
-}
-apply from: '../gradle/mavenCentral-release.gradle'

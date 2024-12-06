@@ -4,10 +4,25 @@ buildscript {
   ext.kotlin_version = '1.4.30'
   repositories {
 
+
+    maven { url = uri("https://maven.aliyun.com/repository/central") }
+    maven { url = uri("https://maven.aliyun.com/repository/gradle-plugin") }
+    maven { url = uri("https://maven.aliyun.com/repository/public") }
+    maven { url = uri("https://maven.aliyun.com/repository/google") }
+    maven { url = uri("https://maven.aliyun.com/repository/central") }
+
+    maven { url = uri("https://jitpack.io") }
+    maven { url = uri("https://maven.aliyun.com/repository/releases") }
+    maven { url = uri("https://repo.eclipse.org/content/repositories/paho-snapshots/") }
+    maven { url = uri("https://repo.eclipse.org/content/repositories/paho-releases/") }
+    maven { url = uri("https://repo1.maven.org/maven2/") }
+
     maven { url 'https://maven.aliyun.com/repository/jcenter' }
     maven { url 'https://maven.aliyun.com/repository/google' }
     maven { url 'https://maven.aliyun.com/repository/central' }
     maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    maven { url 'https://jitpack.io' }
+      google()
 
 //    google()
 //    jcenter()
@@ -26,8 +41,8 @@ buildscript {
     // in the individual module build.gradle files
 
 
-    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-    classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+//    classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
+//    classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
   }
 }
 
