@@ -110,6 +110,8 @@ public class MainActivity extends PermissionActivity {
         //创建并启动下载
         taskId = Aria.download(this)
                 .load(DOWNLOAD_URL)     //读取下载地址
+//                .ignoreCheckPermissions()
+//                .ignoreFilePathOccupy()
                 .m3u8VodOption(getM3U8Option())
                 .setFilePath(DOWNLOAD_PATH) //设置文件保存的完整路径
 //                .add()
@@ -130,6 +132,7 @@ public class MainActivity extends PermissionActivity {
     public void goResume(View view) {
         Aria.download(this)
                 .load(taskId)     //读取任务id
+                .m3u8VodOption(getM3U8Option())
                 .resume();       // 恢复任务
         //.resume();
         Log.d(TAG, "goResume: ");
@@ -169,7 +172,7 @@ public class MainActivity extends PermissionActivity {
         int p = task.getPercent();    //任务进度百分比
         String speed = task.getConvertSpeed();    //转换单位后的下载速度，单位转换需要在配置文件中打开
         long speed1 = task.getSpeed(); //原始byte长度速度
-        Log.d(TAG, "running: p=" + p + " speed1=" + speed1);
+        Log.d(TAG, "running: p=" + p + " speed=" + speed);
     }
 
     // 5
@@ -195,7 +198,11 @@ public class MainActivity extends PermissionActivity {
     @Download.onTaskFail
     void taskFail(DownloadTask task) {
         //在这里处理任务完成的状态
-        Log.d(TAG, "taskFail: " + task.getEntity().rowID);
+        try {
+            Log.d(TAG, "taskFail: " + task.getEntity().rowID);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // 9
