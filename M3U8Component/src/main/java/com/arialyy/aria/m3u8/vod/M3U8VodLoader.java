@@ -511,6 +511,7 @@ final class M3U8VodLoader extends BaseM3U8Loader {
     final List<String> urls = new ArrayList<>();
     mInfoTask.setCallback(new IInfoTask.Callback() {
       @Override public void onSucceed(String key, CompleteInfo info) {
+        Log.d(TAG, "onSucceed: ");
         IVodTsUrlConverter converter = mM3U8Option.isUseDefConvert() ?
             new VodTsDefConverter() :
             mM3U8Option.getVodUrlConverter();

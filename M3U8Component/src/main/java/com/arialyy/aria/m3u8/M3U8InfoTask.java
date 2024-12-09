@@ -19,6 +19,8 @@ import android.net.TrafficStats;
 import android.net.Uri;
 import android.os.Process;
 import android.text.TextUtils;
+import android.util.Log;
+
 import com.arialyy.aria.core.AriaConfig;
 import com.arialyy.aria.core.common.CompleteInfo;
 import com.arialyy.aria.core.download.DTaskWrapper;
@@ -181,6 +183,8 @@ final public class M3U8InfoTask implements IInfoTask {
           addIndexInfo(isGenerateIndexFile, fos, line);
           int setBand = mM3U8Option.getBandWidth();
           int bandWidth = getBandWidth(line);
+          Log.e(TAG, "handleConnect: setBand="+setBand);
+          Log.e(TAG, "handleConnect: bandWidth="+bandWidth);
           // 多码率的m3u8配置文件，清空信息
           //if (isGenerateIndexFile && mInfos != null) {
           //  mInfos.clear();
@@ -190,9 +194,27 @@ final public class M3U8InfoTask implements IInfoTask {
           } else if (bandWidth == setBand) {
             handleBandWidth(conn, reader.readLine());
           } else {
+            //handleBandWidth(conn, reader.readLine());
+            // TODO: 2024-12-07 llg
             failDownload(String.format("【%s】码率不存在", setBand), false);
           }
+          // TODO: 2024-12-07 llg 存在多个EXT-X-STREAM-INF 没有兼容
+          /**
+           * 多 STREAM 有bug
+           * #EXTM3U
+           * #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=200000
+           * gear1/prog_index.m3u8
+           * #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=311111
+           * gear2/prog_index.m3u8
+           * #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=484444
+           * gear3/prog_index.m3u8
+           * #EXT-X-STREAM-INF:PROGRAM-ID=1, BANDWIDTH=737777
+           * gear4/prog_index.m3u8
+           *
+           *
+           */
           return;
+//          continue;
         }
 
         if (line.startsWith("#EXT-X-KEY")) {
@@ -352,6 +374,7 @@ final public class M3U8InfoTask implements IInfoTask {
   private void handleBandWidth(HttpURLConnection conn, String bandWidthM3u8Url) throws IOException {
     IBandWidthUrlConverter converter = mM3U8Option.isUseDefConvert() ? new BandWidthDefConverter()
         : mM3U8Option.getBandWidthUrlConverter();
+    Log.d(TAG, "handleBandWidth: bandWidthM3u8Url"+bandWidthM3u8Url);
     if (converter != null) {
       bandWidthM3u8Url = converter.convert(mEntity.getUrl(), bandWidthM3u8Url);
       if (!bandWidthM3u8Url.startsWith("http")) {
