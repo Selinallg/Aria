@@ -17,6 +17,7 @@
 package com.arialyy.simple.core.download.m3u8;
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,6 +27,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -95,10 +97,12 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
                 mUrl = entity.getUrl();
                 mFilePath = entity.getFilePath();
                 getBinding().pl.setInfo(entity);
-                //mVideoFragment = new VideoPlayerFragment(0, entity);
-                //FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                //ft.add(R.id.video_content, mVideoFragment);
-                //ft.commit();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    mVideoFragment = new VideoPlayerFragment(0, entity);
+                }
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.add(R.id.video_content, mVideoFragment);
+                ft.commit();
                 Log.d(TAG, "onChanged: mUrl=" + mUrl);
                 Log.d(TAG, "onChanged: mFilePath=" + mFilePath);
             }
