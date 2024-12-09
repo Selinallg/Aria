@@ -4,3 +4,4 @@ include ':Simple2'
 
 
 include ':m3u8:M3U8Downloader:app', ':m3u8:M3U8Downloader:library'
+include ':m3u8:M3U8Manger-2.0.6:app', ':m3u8:M3U8Manger-2.0.6:m3u8manger_lib'

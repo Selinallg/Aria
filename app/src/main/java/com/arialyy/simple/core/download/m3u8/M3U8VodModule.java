@@ -33,23 +33,44 @@ public class M3U8VodModule extends BaseViewModule {
   private final String M3U8_PATH_KEY = "M3U8_PATH_KEY";
   // m3u8测试集合：http://www.voidcn.com/article/p-snaliarm-ct.html
   //private final String defUrl = "https://www.gaoya123.cn/2019/1557993797897.m3u8";
-  // 多码率地址：ok
+  // 多码率地址：ok 方案二
 //  private final String defUrl = "http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
+  // 播放OK，方案二
+//  private final String defUrl = "http://hcjs2ra2rytd8v8np1q.exp.bcevod.com/mda-hegtjx8n5e8jt9zv/mda-hegtjx8n5e8jt9zv.m3u8";
+  //http://hcjs2ra2rytd8v8np1q.exp.bcevod.com/mda-hegtjx8n5e8jt9zv/mda-hegtjx8n5e8jt9zv.m3u8.0.ts
 //  private final String defUrl = "https://5.voooe.cn/cache/youku/4e00b49a6e4f11155967c2cb3385a2ab.m3u8";
   //private final String defUrl = "http://pp3zvsk2n.bkt.clouddn.com/20200806/sd/15967206011811803/38475fadd55e4ecea3.m3u8";
   //private final String defUrl = "http://youku.cdn7-okzy.com/20200123/16815_fbe419ed/index.m3u8";
 
 //  private final String defUrl = "https://cn7.kankia.com/hls/20200108/e1eaec074274c64fe46a3bdb5d2ba487/1578488360/index.m3u8";
   //private final String defUrl = "https://youku.cdn7-okzy.com/20191213/16167_c3592a02/index.m3u8";
-  // 播放OK
-  private final String defUrl = "http://qn.shytong.cn/b83137769ff6b555/11b0c9970f9a3fa0.mp4.m3u8";
+  // 播放OK ok
+//  private final String defUrl = "http://qn.shytong.cn/b83137769ff6b555/11b0c9970f9a3fa0.mp4.m3u8";
   //private final String defUrl = "https://135zyv5.xw0371.com/2018/10/29/X05c7CG3VB91gi1M/playlist.m3u8";
   //private final String defUrl = "https://fangao.qfxmj.com/video/20191111/dbf7e2aa0c5f42a8b040442b54c13e3a/cloudv-transfer/555555556nr593o75556r165q86n82n0_eb3da35b8f4442808756a6ddc8ec1372_0_3.m3u8?wsSecret=d5fb403512d4cd427f18858086b35ce4&wsTime=1582197537";
   //private final String defUrl = "https://v1.szjal.cn/20190819/Ql6UD1od/index.m3u8";
+
+
+
+  //private final String defUrl = "https://vod.pennonedu.com/d0ccccd6fd4971ee94786723b78e0102/205da80e3ce241288c548f16b618b9e5-20572cd06d6132f3e8bffdba6030221f-sd.m3u8";
+  //private final String defUrl = "https://vod.pennonedu.com/bbca9230dce571ed80447035d0b20102/4ef2dccc67cd4106ac92bbe0617edd5e-d7029e35b1ece366ed2c53ac1a481939-sd.m3u8";
+  //private final String defUrl = "https://vod.pennonedu.com/b215b290c94b71edbffa6723a78f0102/90a1d51e9469430c9cd96139869be852-4f4145f0206446ffd968bc0ada1e1cfa-sd.m3u8";
+  private final String defUrl = "https://vod.pennonedu.com/c96d06e0c94771edbfbb6732b78e0102/eb738001e1aa4b1b9bbddd84af9a5639-fe4dc419e33cea8bb43d3a95973bf67c-sd.m3u8";
+
+
+//  https://vod.pennonedu.com/bbca9230dce571ed80447035d0b20102/4ef2dccc67cd4106ac92bbe0617edd5e-d7029e35b1ece366ed2c53ac1a481939-sd.m3u8
+//
+//
+//  https://vod.pennonedu.com/b215b290c94b71edbffa6723a78f0102/90a1d51e9469430c9cd96139869be852-4f4145f0206446ffd968bc0ada1e1cfa-sd.m3u8
+//
+//  https://vod.pennonedu.com/c96d06e0c94771edbfbb6732b78e0102/eb738001e1aa4b1b9bbddd84af9a5639-fe4dc419e33cea8bb43d3a95973bf67c-sd.m3u8
+
+
+
   private final String filePath =
       Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).getPath()
           //+ "/道士下山.ts";
-          + "/bb1.ts.mp4";
+          + "/bb6.ts.mp4";
 
   private MutableLiveData<DownloadEntity> liveData = new MutableLiveData<>();
   private DownloadEntity singDownloadInfo;

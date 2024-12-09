@@ -325,7 +325,30 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
                 .create();
     }
 
+
+    //
     private M3U8VodOption getM3U8Option() {
+        M3U8VodOption option = new M3U8VodOption();
+        //.generateIndexFile()
+        //.merge(true)
+        //.setVodTsUrlConvert(new VodTsUrlConverter());
+        //.setMergeHandler(new TsMergeHandler());
+        //option.setUseDefConvert(true);
+        option.setUseDefConvert(false);
+//        option.setBandWidth(200000);
+        option.setKeyUrlConverter(new KeyUrlConverter());
+        option.setBandWidthUrlConverter(new BandWidthUrlConverter());
+        option.setVodTsUrlConvert(new VodTsUrlConverter());
+        //
+//        option.generateIndexFile();
+        // 合并成 可播放文件
+        option.merge(true);
+        return option;
+    }
+
+
+    // http://qn.shytong.cn/b83137769ff6b555/11b0c9970f9a3fa0.mp4.m3u8
+    private M3U8VodOption getM3U8Option2() {
         M3U8VodOption option = new M3U8VodOption();
         //option.setBandWidth(200000);
         //.generateIndexFile()
@@ -402,9 +425,12 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
             String host = uri.getHost();
             String scheme = uri.getScheme();
             String authority = uri.getAuthority();
+
+            Log.e(TAG, "convert: m3u8Url=" + m3u8Url);
             Log.e(TAG, "convert: host=" + host);
             Log.e(TAG, "authority: authority=" + authority);
             Log.e(TAG, "scheme: scheme=" + scheme);
+            Log.e(TAG, "scheme: uri=" + uri.toString());
             List<String> newTslist = new ArrayList<>();
             String pattern = "[0-9a-zA-Z]+[.]ts";
             Pattern r = Pattern.compile(pattern);
@@ -418,19 +444,30 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
                 //只有文件名
                 else if (m.find()) {
                     // 规则一
-//          int e = m3u8Url.lastIndexOf("/") + 1;
-//          String urlPath = m3u8Url.substring(0, e) + tspath;
-//          Log.d(TAG, "convert: urlPath=="+urlPath);
-//                    // 规则二
+                    // http://hcjs2ra2rytd8v8np1q.exp.bcevod.com/mda-hegtjx8n5e8jt9zv/mda-hegtjx8n5e8jt9zv.m3u8
+                    int e = m3u8Url.lastIndexOf("/") + 1;
+                    String urlPath = m3u8Url.substring(0, e) + tspath;
+                    newTslist.add(urlPath);
+                    Log.d(TAG, "convert: urlPath==" + urlPath);
+                    // 规则二
 //                    int e = m3u8Url.lastIndexOf("/");
 //                    String urlPath = m3u8Url.substring(0, e) + tspath;
+//                    newTslist.add(urlPath);
 //                    Log.d(TAG, "convert: urlPath==" + urlPath);
 //                    // 规则三
                     // urlPath==http://qn.shytong.cn/b83137769ff6b555/11b0c9970f9a3fa0.mp4000000.ts
-                    int e = m3u8Url.lastIndexOf("/");
-                    String urlPath = scheme+ "://"+authority + tspath;
-                    Log.d(TAG, "convert: urlPath==" + urlPath);
-                    newTslist.add(urlPath);
+                    // http://qn.shytong.cn/b83137769ff6b555/11b0c9970f9a3fa0.mp4000004.ts
+//                    int e = m3u8Url.lastIndexOf("/");
+//                    String urlPath = scheme+ "://"+authority + tspath;
+//                    Log.d(TAG, "convert: urlPath==" + urlPath);
+                    // 规则四
+                    // http://hcjs2ra2rytd8v8np1q.exp.bcevod.com/mda-hegtjx8n5e8jt9zv/mda-hegtjx8n5e8jt9zv.m3u8
+//                    int e = m3u8Url.lastIndexOf("/");
+//                    if (!tspath.startsWith("/")){
+//                        tspath = "/"+tspath;
+//                    }
+//                    String urlPath = scheme + "://" + authority + tspath;
+//                    newTslist.add(urlPath);
                 }
                 //相对路径
                 else {
@@ -458,6 +495,7 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
         }
     }
 
+    // #EXT-X-STREAM-INF
     static class BandWidthUrlConverter implements IBandWidthUrlConverter {
 
 
@@ -490,8 +528,9 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
                     Log.e(TAG, "BandWidthUrlConverter convert: xxxxxxxxxx" + e.getMessage());
                 }
             }
-
-            return m3u8Url.substring(0, index + 1) + bandWidthUrl;
+            String result = m3u8Url.substring(0, index + 1) + bandWidthUrl;
+            Log.e(TAG, "convert: sucess result=" + result);
+            return result;
         }
     }
 
@@ -499,7 +538,7 @@ public class M3U8VodDLoadActivity extends BaseActivity<ActivityM3u8VodBinding> {
 
         @Override
         public String convert(String m3u8Url, String tsListUrl, String keyUrl) {
-            ALog.d("TAG", "convertUrl....");
+            ALog.e(TAG, "convertUrl....");
             return null;
         }
     }
